@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="snow">
+        <span class="snow1"></span>
+        <span class="snow2"></span>
+        <span class="snow3"></span>
+    </div>
+    <div class="tree">
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <style type="text/css">
+
+        .snow-container{position:fixed;width:100%;max-width:100%;z-index:99999;pointer-events:none;overflow:hidden;top:0;height:100%}
+        
+        .snow{display:block;position:absolute;z-index:2;top:0;right:0;bottom:0;left:0;pointer-events:none;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);-webkit-animation:snow linear infinite;animation:snow linear infinite}
+        
+        .snow.foreground{background-image:url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-large-075d267ecbc42e3564c8ed43516dd557.png");-webkit-animation-duration:15s;animation-duration:10s}
+        
+        .snow.foreground.layered{-webkit-animation-delay:7.5s;animation-delay:7.5s}
+        
+        .snow.middleground{background-image:url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png");-webkit-animation-duration:20s;animation-duration:15s}
+        
+        .snow.middleground.layered{-webkit-animation-delay:10s;animation-delay:10s}
+        
+        .snow.background{background-image:url("https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png");-webkit-animation-duration:25s;animation-duration:20s}
+        
+        .snow.background.layered{-webkit-animation-delay:12.5s;animation-delay:12.5s}
+        
+        @-webkit-keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(5%,100%,0);transform:translate3d(5%,100%,0)}}
+        
+        @keyframes snow{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{-webkit-transform:translate3d(5%,100%,0);transform:translate3d(5%,100%,0)}}
+        
+        </style>
+        
+        <div class='snow-container'>
+        
+                <div class='snow foreground'></div>
+        
+                <div class='snow foreground layered'></div>
+        
+                <div class='snow middleground'></div>
+        
+                <div class='snow middleground layered'></div>
+        
+                <div class='snow background'></div>
+        
+                <div class='snow background layered'></div>
+        
+        </div>
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'type='text/javascript'></script>
+        <script type='text/javascript'>
+        //<![CDATA[
+        $(function(){
+            $('html').append('<img id="halo" title="Happy Noel" style="cursor:pointer;position:fixed;z-index:99999" height="120" src="https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif"/>')
+            setInterval(function(){
+               var $X=Math.ceil(Math.random()*$(window).width())
+               var $Y=Math.ceil(Math.random()*$(window).height())
+               $('img#halo').animate({'left':$X,'top':$Y},5000)
+            },5000)
+            $('img#halo').click(function(){
+                window.open('https://lh3.ggpht.com/-LSDhJFNSG-E/VnQh0rSGAHI/AAAAAAAADoo/3FdK8o-hZ6A/s1600/tuan_loc_cho_qua_cua_ong_gia_noel_anh.gif','')
+            })
+         })
+        //]]>
+        </script>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #001f00;
+    }
+    body:before{
+        conter:"";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: #fff;
+        width: 100%;
+        height: 250px;
+    }
+    .tree{
+        position: relative;
+        width: 400px;
+        height: 400px; background: rgba(0,0,0,0.1);
+    }
+    .tree:before{
+        content:"";
+        position: absolute;
+        bottom: -70px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.1);
+    }
+    .tree:after{
+        content: "";
+        position: absolute;
+        bottom: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 40px;
+        background: #734500;
+    }
+    .tree div{
+        position: absolute;
+        width: 100%;
+        height: 200px;
+        bottom: 0;
+        display: flex;
+    }
+    .tree div:nth-child(2){
+        transform: translateY(-100px) scale(0.8);
+        z-index: 1;
+    }
+    .tree div:nth-child(3){
+        transform: translateY(-175px) scale(0.6);
+        z-index: 1;
+    }
+    .tree div:nth-child(4){
+        transform: translateY(-240px) scale(0.4);
+        z-index: 1;
+    }
+    .tree div:nth-child(5){
+        transform: translateY(-280px) scale(0.2);
+        z-index: 1;
+    }
+    .tree div span{
+        position: relative;
+        width: 50%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+    }
+    .tree div span:nth-child(1):before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(#00b300, #0f0);
+        border-top-left-radius: 110% 100%;
+        border-top-right-radius:0% 100%;
+        border-bottom-left-radius: 50% 20%;
+        border-bottom-right-radius: 50% 20%;
+    }
+    .tree div span:nth-child(2):before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(#00b300, #0f0);
+        border-top-left-radius: 0% 100%;
+        border-top-right-radius:110% 100%;
+        border-bottom-left-radius: 50% 20%;
+        border-bottom-right-radius: 50% 20%;
+    }
+    .snow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .snow .snow1{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(snow.png);
+        z-index: 1000;
+        mix-blend-mode: screen;
+        animation: animate 5% linear infinite;
+        transform: scale(2);
+    }
+    snow .snow2{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(snow.png);
+        z-index: 1000;
+        mix-blend-mode: screen;
+        animation: animate 5% linear infinite;
+        transform: scale(1);
+        filter: blur(1px);
+    }
+    snow .snow3{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(snow.png);
+        z-index: 1000;
+        mix-blend-mode: screen;
+        animation: animate 5% linear infinite;
+        transform: scale(1.5);
+    }
+    @keyframes animate{
+        0%{
+            background-position: 0 0;
+
+        }
+        100%{
+            background-position: 0 506px;
+        }
+    }
+</style>
+<script type="text/javascript" src="https://tientv.com/noel/noel.js"></script>
+<div id="the-wrap">
+    <!--- red ball--->
+    <div class="ball-wrapper">
+    <div class="string"></div>
+    <div class="ring"></div>
+    <div class="button"></div>
+    <div class="red-ball"></div>
+    </div> <!---- end of wrapper---->
+    
+    
+    <!---green ball---->
+    <div class="ball-wrapper">
+    <div class="string"></div>
+    <div class="ring"></div>
+    <div class="button"></div>
+    <div class="green-ball"></div>
+    </div> <!---- end of wrapper---->
+    
+    
+    <!---blue ball--->
+    <div class="ball-wrapper">
+    <div class="string"></div>
+    <div class="ring"></div>
+    <div class="button"></div>
+    <div class="blue-ball"></div>
+    </div> <!---- end of wrapper---->
+    
+    <!---white ball--->
+    <div class="ball-wrapper">
+    <div class="string"></div>
+    <div class="ring"></div>
+    <div class="button"></div>
+    <div class="white-ball"></div>
+    </div> <!---- end of wrapper---->
+      </div>
+     <style>html{
+        background-color: #c03636;
+        
+      }
+      
+      #the-wrap{
+        width: 1000px;
+        margin: auto;
+        
+      }
+      
+      .ball-wrapper{
+        float: left;
+        margin: 0px 40px;
+        
+      }
+      .ring{
+        height:15px;
+        width: 5px;
+        background-color: ##c03636;
+        border: 2px solid  #f99d24;
+        border-radius: 45%;
+        position: relative;
+        left: 76.4px;
+        top: 12px;
+      }
+      
+      .string{
+       
+        width: 1.5px;
+        position: relative;
+        background-color: #f99d24;
+        height: 200px;
+        left: 80px;
+        top: 12.4px;
+        margin-top: -20px;
+        
+        
+      }
+      
+      
+      
+      .button {
+        height: 22px;
+        width: 30px;
+        background-color: #f99d24;
+        position: relative;
+        left: 65px;
+        top: 7px;
+        border-radius: 4px;
+      
+      
+      }
+      
+      
+      .red-ball {
+        background-color: #6b2f36;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: 3px;
+        
+        }
+      
+      .green-ball {
+        background-color: #9cd6ac;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: 3px;
+        
+        }
+      
+      .blue-ball{
+       background-color: #475479;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: 3px;  
+        
+      }
+      
+      .white-ball{
+       background-color: #f9f9f9;
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+        position: relative;
+        left: 3px;  
+        
+      }</style>
+      <snowman>
+        <div class="body">
+            <div class="head"></div>
+            <div class="hat"></div>
+            <div class="scarf"></div>
+        <div class="buttons"></div>
+            <div class="hands">
+                <div class="right-hand"></div>
+                <div class="left-hand"></div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </snowman>
+    <style>* {margin:0;padding:0;box-sizing:border-box;}
+
+        html,body {
+            background:#2c3e50;
+            height:100%;
+        }
+        
+        snowman .body {
+          width: 200px;
+          height: 200px;
+          background: #ecf0f1;
+          box-shadow: -13px -8px 0px rgba(0,0,0,0.1) inset;
+          border-radius: 50%;
+          margin-top: -100px;
+          position: absolute;
+          right:0;left:0;margin:0 auto;
+          margin-top:270px;
+        }
+        
+        snowman .body:before {
+          width: 100px;
+          height: 100px;
+          background: #ecf0f1;
+          box-shadow: -5px 0px 0px rgba(0,0,0,0.1) inset;
+          border-radius: 50%;
+          display: inline-block;
+          content: "";
+          position: relative;
+          top: -191px;
+          left: 46px;
+          z-index:30;
+        }
+        
+        snowman .body:after {
+          width: 160px;
+          height: 160px;
+          background: #ecf0f1;
+          box-shadow: -7px -5px 0px rgba(0,0,0,0.1) inset;
+          border-radius: 50%;
+          display: inline-block;
+          content: "";
+          position: relative;
+          top: -203px;
+          left: 20px;
+        }
+        
+        snowman .body .head {
+          width: 0px;
+          height: 0px;
+          border-style: solid;
+          border-width: 8px 41px 8px 0;
+          border-color: transparent #FA9A20 transparent transparent;
+          content: "";
+          position: relative;
+          top: -229px;
+          display: inline-block;
+          left: -50px;
+          -webkit-transform: rotate(10deg);
+          -moz-transform: rotate(10deg);
+          transform: rotate(10deg);
+          box-shadow: 0px 43px rgba(0,0,0,0.2) inset;
+          z-index:30;
+        }
+        
+        snowman .body .head:before {
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #2c3e50;
+          display: inline-block;
+          position: absolute;
+          top: -23px;
+          left: 20px;
+        }
+        
+        snowman .body .head:after {
+          content: "";
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: #2c3e50;
+          display: inline-block;
+          position: absolute;
+          top: -26px;
+          left: 40px;
+        }
+        
+        .scarf {
+          border-bottom: 21px solid rgb(243, 77, 77);
+          border-left: 18px solid transparent;
+          border-right: 29px solid transparent;
+          height: 0;
+          width: 104px;
+          position: absolute;
+          top: -101px;
+          z-index: 30;
+          left: 50px;
+          border-radius: 0px 100% 5px 10px;
+        }
+        
+        .scarf:after {
+          width: 74px;
+          height: 17px;
+          -webkit-transform: rotate(86deg);
+          -moz-transform: rotate(86deg);
+          transform: rotate(86deg);
+          background: rgb(243, 77, 77);
+          display: inline-block;
+          content: "";
+          position: absolute;
+          top: 34px;
+          left: 15px;
+          border-radius: 50% 0% 50% 50%;
+          box-shadow: -4px 0px rgba(0,0,0,0.1) inset;
+        }
+        snowman .body .shadow {
+          background: rgba(0,0,0,0.2);
+          border-radius: 50%;
+          width: 190px;
+          height: 30px;
+          position: absolute;
+          bottom: -29px;
+          z-index: 1;
+          left: 30px;
+        }
+        .left-hand {
+          position: absolute;
+          top: -30px;
+          left: -7px;
+          -webkit-transform: rotate(15deg);
+          -moz-transform: rotate(15deg);
+          transform: rotate(15deg);
+          border-bottom: 6px solid rgba(151, 102, 13, 1);
+          border-left: 2px solid transparent;
+          border-right: 0 solid transparent;
+          height: 0;
+          width: 36px;
+        }
+        .left-hand:before {
+          width: 81px;
+          left: -82px;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          -webkit-transform: rotate(-12deg);
+          -moz-transform: rotate(-12deg);
+          transform: rotate(-12deg);
+          top: 8px;
+          border-bottom: 7px solid rgba(128, 84, 6, 1);
+          border-left: 3px solid transparent;
+          border-right: 3px solid transparent;
+          height: 0;
+          z-index:30;
+        }
+        .left-hand:after {
+          width: 47px;
+          left: -88px;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          -webkit-transform: rotate(17deg);
+          -moz-transform: rotate(17deg);
+          transform: rotate(17deg);
+          top: 3px;
+          border-bottom: 4px solid rgba(128, 84, 6, 1);
+          border-left: 3px solid transparent;
+          border-right: 3px solid transparent;
+          height: 0;
+          border-radius: 20px 50% 10% 20%;
+        }
+        
+        .right-hand {
+          position: absolute;
+          top: -30px;
+          right: -37px;
+          -webkit-transform: rotate(-12deg);
+          -moz-transform: rotate(-12deg);
+          transform: rotate(-12deg);
+          border-bottom: 6px solid rgba(151, 102, 13, 1);
+          border-right: 2px solid transparent;
+          border-left: 0 solid transparent;
+          height: 0;
+          width: 66px;
+        }
+        .right-hand:before {
+          width: 80px;
+          right: -82px;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          -webkit-transform: rotate(10deg);
+          -moz-transform: rotate(10deg);
+          transform: rotate(10deg);
+          top: 7px;
+          border-bottom: 6px solid rgba(128, 84, 6, 1);
+          border-right: 3px solid transparent;
+          border-left: 3px solid transparent;
+          height: 0;
+          z-index: 30;
+        }
+        .right-hand:after {
+          width: 47px;
+          right: -47px;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          -webkit-transform: rotate(-16deg);
+          -moz-transform: rotate(-16deg);
+          transform: rotate(-16deg);
+          top: -6px;
+          border-bottom: 4px solid rgba(128, 84, 6, 1);
+          border-right: 3px solid transparent;
+          border-lrgy: 3px solid transparent;
+          height: 0;
+          border-radius: 20px 50% 10% 20%;
+        }
+        
+        snowman .hat {
+        top: -253px;
+        left: 76px;
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+        transform: rotate(10deg);
+        position: absolute;
+        border-radius: 0;
+        z-index: 20;
+        border-top: 56px solid rgb(37, 37, 37);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        height: 0;
+        width: 60px;
+        border-bottom: 27px solid rgb(246, 62, 62);
+        }
+        
+        snowman .buttons {
+          height: 8px;
+          width: 8px;
+          background: #2c3e50;
+          position: absolute;
+          border-radius: 50%;
+          left: 60px;
+          top: -23px;
+          z-index: 30;
+        }
+        
+        snowman .buttons:before {
+          height: 10px;
+          width: 10px;
+          background: #2c3e50;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          border-radius: 50%;
+          top: -30px;
+          left: 5px;
+        }
+        
+        snowman .buttons:after {
+          height: 6px;
+          width: 6px;
+          background: #2c3e50;
+          position: absolute;
+          content: "";
+          display: inline-block;
+          border-radius: 50%;
+          top: 30px;
+          left: 5px;
+        }</style>
+</html>
